@@ -55,7 +55,7 @@ li {
     margin-bottom: 10px;
 }
 
-.questionPage, .submitPage, .highscorePage, #checkLine {
+.questionPage, .submitPage, .highScorePage, #checkLine {
     display: none;
 }
 

@@ -189,6 +189,7 @@ function addItem(n) {
     var addedList = getScore();
     addedList.push(n);
     localStorage.setItem("ScoreList", JSON.stringify(addedList));
+    console.log(localStorage);
 };
 
 function saveScore() {
@@ -197,7 +198,7 @@ function saveScore() {
         score: totalScore
     }
     addItem(scoreItem);
-    getScore();
+    showScore();
 };
 
 // EVENT LISTENERS
@@ -216,7 +217,7 @@ submitBtn.addEventListener("click", function(event) {
     introPage.style.display = "none";
     highScorePage.style.display = "block";
     questionPage.style.display = "none";
-    getScore();
+    saveScore();
 });
 
 // Evaluates score list and rankings
