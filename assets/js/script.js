@@ -3,7 +3,7 @@ var welcome = document.querySelector("#introduction"); // assigns div element wi
 var startBtn = document.querySelector("#startButton"); // assigns button element with the id startButton to the startBtn variable
 var introPage = document.querySelector("#introPage"); // assigns the section element with the id introPage to the introPage variable
 var questionPage = document.querySelector("#questionPage"); // assigns the section element with the id questionPage to the questionPage variable
-var askQuestion = document.querySelector("#questions"); // assigns the h2 element with the id question to the askQuestions variable
+var askQuestion = document.querySelector("#question"); // assigns the h2 element with the id question to the askQuestions variable
 
 var choiceBtn = document.querySelectorAll(".choice"); // assigns the button elements with the id choice to the choiceBtn variable in an array
 var answerBtn1 = document.querySelector("#answerBtn1"); // assigns the button element with the id answerBtn1 to the answerBtn1 variable
@@ -60,6 +60,7 @@ var questionSource = [
 ];
 
 // VARIABLES CONTROLLING TIME
+var timeLeft = document.getElementById("timer");
 var timeLeft = 90;
 var questionNumber = 0;
 var totalScore = 0;
@@ -68,13 +69,13 @@ var questionCount = 1;
 // START BUTTON TRIGGERS TIMER COUNTDOWN
 function countdown() {
     var timerInterval = setInterval(function() {
-        secondsLeft--;
-        timeLeft.textContent = "Time left: " + secondsLeft + " seconds";
+        timeLeft--;
+        timeLeft.textContent = "Time left: " + timeLeft + " seconds";
 
-        if (secondsLeft <= 0) {
+        if (timeLeft <= 0) {
             clearInterval(timerInterval); // clears the countdown clock
             timeLeft.textContent = "Your time is up!"; // displays the message when time is less than or equal to zero
-            finish.textContent = "Your time is up!"; // shows scoreboard with user score instead of all done message
+            finish.textContent = "Your time is up!"; // shows scoreRecord with user score instead of all done message
             gameOver();
         } else if(questionCount >= questionSource.length +1) {
             clearInterval(timerInterval);
@@ -87,13 +88,13 @@ function countdown() {
 function startQuiz() {
     introPage.style.display = "none"; 
     questionPage.style.display = "block"; 
-    questionNumber = 0;
+    questionNumber = 0
     countdown();
     showQuestion(questionNumber);
 }
 
 // DISPLAY QUESTIONS AND ANSWERS
-function showQuestion (n) {
+function showQuestion(n) {
     askQuestion.textContent = questionSource[n].question;
     answerBtn1.textContent = questionSource[n].choice[0];
     answerBtn2.textContent = questionSource[n].choice[1];
@@ -117,7 +118,7 @@ function checkAnswer(event) {
         checkLine.textContent = "Correct Answer!";
         totalScore = totalScore + 1; // increases the total score by 1
     } else {
-        secondsLeft = secondsLeft - 10; // removes 10 seconds from the timer
+        timeLeft = timeLeft - 10; // removes 10 seconds from the timer
         checkLine.textContent = "That is wrong! the correct answer is " + questionSource[questionNumber].answer + " .";
     }
 
@@ -133,8 +134,7 @@ function checkAnswer(event) {
 // GAME END
 function gameOver() {
     questionPage.style.display = "none"; // Removes question page content
-    scoreBoard.style.display = "block"; // displays the scoreboard
-    console.log(scoreBoard); // REMOVE IN FINAL CODE
+    scoreRecord.style.display = "block"; // displays the scoreRecord
     finalScore.textContent = "Nice job! Your final score is" + totalScore + " points!";
     timeLeft.style.display = "none";
 };
@@ -151,7 +151,7 @@ function getScore() {
     return freshList;
 }; 
 
-// DISPLAY SCORE ON SCOREBOARD
+// DISPLAY SCORE ON scoreRecord
 function showScore() {
     scoreRecord.innerHTML = "";
     scoreRecord.style.display = "block";
@@ -206,7 +206,7 @@ choiceBtn.forEach(function(click) {
 
 submitBtn.addEventListener("click", function(event) {
     event.preventDefault();
-    scoreBoard.style.display = "none";
+    scoreRecord.style.display = "none";
     introPage.style.display = "none";
     questionPage.style.display = "none";
     highScorePage.style.display = "block";
@@ -215,7 +215,7 @@ submitBtn.addEventListener("click", function(event) {
 
 backBtn.addEventListener("click", function(event) {
     event.preventDefault();
-    scoreBoard.style.display = "none";
+    scoreRecord.style.display = "none";
     questionPage.style.display = "none";
     highScorePage.style.display = "none";
     introPage.style.display = "block";
