@@ -76,11 +76,13 @@ li {
 @media only screen and (max-width: 960px) {
     main {
         margin: 15vh 50px 0 50px;
+        background-color: lightblue;
     }
 }
 
 @media only screen and (max-width: 520px) {
     main {
         margin: 5vh 10px 0 10px;
+        background-color: lightgrey;
     }
 }

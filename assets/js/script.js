@@ -3,7 +3,7 @@ var welcome = document.querySelector("#introduction"); // assigns div element wi
 var startBtn = document.querySelector("#startButton"); // assigns button element with the id startButton to the startBtn variable
 var introPage = document.querySelector("#introPage"); // assigns the section element with the id introPage to the introPage variable
 var questionPage = document.querySelector("#questionPage"); // assigns the section element with the id questionPage to the questionPage variable
-var askQuestion = document.querySelector("#questions"); // assigns the h2 element with the id question to the askQuestions variable
+var askQuestion = document.querySelector("#question"); // assigns the h2 element with the id question to the askQuestions variable
 
 var choiceBtn = document.querySelectorAll(".choice"); // assigns the button elements with the id choice to the choiceBtn variable in an array
 var answerBtn1 = document.querySelector("#answerBtn1"); // assigns the button element with the id answerBtn1 to the answerBtn1 variable
@@ -12,12 +12,12 @@ var answerBtn3 = document.querySelector("#answerBtn3"); // assigns the button el
 var answerBtn4 = document.querySelector("#answerBtn4"); // assigns the button element with the id answerBtn4 to the answerBtn1 variable
 
 var checkLine = document.querySelector("#checkLine"); // assigns the div element with the id checkline to the checkLine variable
-var submitPage = document.querySelector("submitPage"); // assigns the section element with the id submitPage to the Submit page variable
+var scoreBoard = document.querySelector("#submitPage"); // assigns the section element with the id submitPage to the Submit page variable
 var finalScore = document.querySelector("#finalScore"); // assigns the p element with the id finalScore to the FinalScore variable
 var userInitial = document.querySelector("#initial"); // assigns the input element with the id initial to the userInitial variable
 
 var submitBtn = document.querySelector("#submitBtn");
-var highScorePage = document.querySelector("highscorePage");
+var highScorePage = document.querySelector("#highScorePage");
 var scoreRecord = document.querySelector("#scoreRecord");
 var scoreCheck = document.querySelector("#scoreCheck");
 var finish = document.querySelector("#finish");
@@ -60,6 +60,8 @@ var questionSource = [
 ];
 
 // VARIABLES CONTROLLING TIME
+var timer = document.getElementById("timer");
+
 var timeLeft = 90;
 var questionNumber = 0;
 var totalScore = 0;
@@ -68,10 +70,10 @@ var questionCount = 1;
 // START BUTTON TRIGGERS TIMER COUNTDOWN
 function countdown() {
     var timerInterval = setInterval(function() {
-        secondsLeft--;
-        timeLeft.textContent = "Time left: " + secondsLeft + " seconds";
+        timeLeft--;
+        timer.textContent = "Time left: " + timeLeft + " seconds";
 
-        if (secondsLeft <= 0) {
+        if (timeLeft <= 0) {
             clearInterval(timerInterval); // clears the countdown clock
             timeLeft.textContent = "Your time is up!"; // displays the message when time is less than or equal to zero
             finish.textContent = "Your time is up!"; // shows scoreboard with user score instead of all done message
@@ -117,7 +119,7 @@ function checkAnswer(event) {
         checkLine.textContent = "Correct Answer!";
         totalScore = totalScore + 1; // increases the total score by 1
     } else {
-        secondsLeft = secondsLeft - 10; // removes 10 seconds from the timer
+        timeLeft = timeLeft - 10; // removes 10 seconds from the timer
         checkLine.textContent = "That is wrong! the correct answer is " + questionSource[questionNumber].answer + " .";
     }
 
@@ -134,9 +136,9 @@ function checkAnswer(event) {
 function gameOver() {
     questionPage.style.display = "none"; // Removes question page content
     scoreBoard.style.display = "block"; // displays the scoreboard
-    console.log(scoreBoard); // REMOVE IN FINAL CODE
-    finalScore.textContent = "Nice job! Your final score is" + totalScore + " points!";
-    timeLeft.style.display = "none";
+    finalScore.textContent = "Nice job! Your final score is " + totalScore + " points!";
+    timer.style.display = "none";
+    console.log(scoreBoard); // Remove from final code
 };
 
 // STORES AND GETS SCORES AND INITIALS FROM LOCAL STORAGE
@@ -157,10 +159,10 @@ function showScore() {
     scoreRecord.style.display = "block";
     
     var highScores = sort();
-    var topTen = highScores.slice(0,10);
+    var topThree = highScores.slice(0,3);
 
-    for (var i = 0; i < topTen.length; i++); {
-        var item = topTen[i];
+    for (var i = 0; i < topThree.length; i++); {
+        var item = topThree[i];
         var li = document.createElement("li");
         li.textContent = item.user + ": " + item.score;
         li.setAttribute("data-index", i);
@@ -178,6 +180,7 @@ function sortScores() {
             return b.score - a.score;
         })
     return unsortedList;
+    console.log(unsortedList);
     }
 };
 
@@ -198,30 +201,44 @@ function saveScore() {
 };
 
 // EVENT LISTENERS
+// Starts the quiz
 startBtn.addEventListener("click", startQuiz);
 
+// Moves the question list forward on click
 choiceBtn.forEach(function(click) {
     click.addEventListener("click", checkAnswer);
 });
 
+// Saves user information and go to the next page
 submitBtn.addEventListener("click", function(event) {
     event.preventDefault();
     scoreBoard.style.display = "none";
     introPage.style.display = "none";
-    questionPage.style.display = "none";
     highScorePage.style.display = "block";
+    questionPage.style.display = "none";
     getScore();
 });
 
+// Evaluates score list and rankings
+scoreCheck.addEventListener("click", function(event) {
+    event.preventDefault();
+    scoreBoard.style.display = "none";
+    introPage.style.display = "none";
+    highScorePage.style.display = "block";
+    questionPage.style.display = "none";
+});
+
+// Resets to main page so the user can play again
 backBtn.addEventListener("click", function(event) {
     event.preventDefault();
     scoreBoard.style.display = "none";
+    introPage.style.display = "block";
     questionPage.style.display = "none";
     highScorePage.style.display = "none";
-    introPage.style.display = "block";
     location.reload();
 });
 
+// Clears local storage
 clearBtn.addEventListener("click", function(event) {
     event.preventDefault();
     localStorage.clear();
