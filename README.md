@@ -23,29 +23,29 @@ This challenges tasked me with building a timed coding quiz with multiple-choice
     - **THEN** I can save my initials and score
 
 ## USAGE
-[ENTRANCE](https://www.google.com)
-![ENTRANCE_EXAMPLE](https://www.google.com)
+[ENTRANCE](https://raw.githubusercontent.com/FourStringFunk/charris_code_quiz/main/assets/images/Entrance.png)
+![ENTRANCE_EXAMPLE](https://raw.githubusercontent.com/FourStringFunk/charris_code_quiz/main/assets/images/Entrance.png)
 
 - An overview of the landing page. 
 - Clicking submit with take users directly into the quiz. 
 - Clicking the view high scores button will display the high scores IF the user has already played. If they have NOT played, then the high scores page will render as empty, with just the header and buttons.
 
-[QUESTIONS](https://www.google.com)
-![QUESTIONS_EXAMPLE](https://www.google.com)
+[QUESTIONS](https://raw.githubusercontent.com/FourStringFunk/charris_code_quiz/main/assets/images/Questions.png)
+![QUESTIONS_EXAMPLE](https://raw.githubusercontent.com/FourStringFunk/charris_code_quiz/main/assets/images/Questions.png)
 
 - On click of one of the answers, the js will validate whether or not the answer was correct and display different messaging.
 - If the answer is correct, there will be no deduction from the timer. If the answer is incorrect, then the timer will be docked 10 seconds.
 - Regardless of the validation, once a user has selected an answer, they'll be directed to the next question.
 
-[FORM SUBMIT](https://www.google.com)
-![FORM_SUBMIT_EXAMPLE](https://www.google.com)
+[FORM SUBMIT](https://raw.githubusercontent.com/FourStringFunk/charris_code_quiz/main/assets/images/Form.png)
+![FORM_SUBMIT_EXAMPLE](https://raw.githubusercontent.com/FourStringFunk/charris_code_quiz/main/assets/images/Form.png)
 
 - On timer timeout OR answering all of the questions, the user will be displayed with their final score and option to save it to the scoreboard (using local storage).
 - The user can type in their intials or full name and click the submit button.
 - They'll then be shown the scoreboard
 
-[SCOREBOARD](https://www.google.com)
-![SCOREBOARD_EXAMPLE](https://www.google.com)
+[SCOREBOARD](https://github.com/FourStringFunk/charris_code_quiz/blob/main/assets/images/Scoreboard.png)
+![SCOREBOARD_EXAMPLE](https://github.com/FourStringFunk/charris_code_quiz/blob/main/assets/images/Scoreboard.png)
 
 - The scoreboard will sort all of the scores stored in local storage.
 - It then sorts and displays the names and scores of the top three participants.
