@@ -53,10 +53,10 @@ This challenges tasked me with building a timed coding quiz with multiple-choice
 - The user can click the CLEAR HIGH SCORES button to wipe local storage and start over.
 
 ### GITHUB REPO
-![GITHUB_REPOSITORY](https://github.com/FourStringFunk/charris_code_quiz)
+[GITHUB_REPOSITORY](https://github.com/FourStringFunk/charris_code_quiz)
 
 ### LIVE SITE
-![LIVE_SITE](https://fourstringfunk.github.io/charris_code_quiz/)
+[LIVE_SITE](https://fourstringfunk.github.io/charris_code_quiz/)
 
 ## CREDITS
 Andrew Stenho - debug help on my for loop
