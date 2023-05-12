@@ -39,18 +39,18 @@ var questionSource = [
     },
     {
         question: "Question 3: Which of the following represents the correct way to write an if statement in JavaScript?",
-        choice: ["a. if i == 2 {myExecutionals};", "b. if i === 5 then {myExecutionals};", "c. if(i > 5) {myExecutionals};", "d. if(i <= 10) (myExecutionals);"],
+        choice: ["a. if i == 2 {myExecutables};", "b. if i === 5 then {myExecutables};", "c. if(i > 5) {myExecutables};", "d. if(i <= 10) (myExecutables);"],
         answer: "c"
     },
     {
         question: "Question 4: Which of the following is NOT a commonly used data type",
-        choice: ["a. boolean", "b. string", "c. console.log", "d. alert"],
+        choice: ["a. boolean", "b. string", "c. console.log", "d. numbers"],
         answer: "c"
     },
     {
         question: "Question 5: When assigned to variable, what must string values be enclosed within?",
         choice: ["a. parentheses", "b. brackets", "c. carrots", "d. quotes"],
-        answer: "c"
+        answer: "d"
     },
     {
         question: "Question 6: What symbol would you use to identify variables that are equal in type and value?",
