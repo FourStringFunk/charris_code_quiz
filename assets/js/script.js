@@ -14,7 +14,7 @@ var answerBtn4 = document.querySelector("#answerBtn4"); // assigns the button el
 var checkLine = document.querySelector("#checkLine"); // assigns the div element with the id checkline to the checkLine variable
 var scoreBoard = document.querySelector("#submitPage"); // assigns the section element with the id submitPage to the Submit page variable
 var finalScore = document.querySelector("#finalScore"); // assigns the p element with the id finalScore to the FinalScore variable
-var userInitial = document.querySelector("#initial"); // assigns the input element with the id initial to the userInitial variable
+var userInitial = document.querySelector("#userInitial"); // assigns the input element with the id initial to the userInitial variable
 
 var submitBtn = document.querySelector("#submitBtn");
 var highScorePage = document.querySelector("#highScorePage");
@@ -146,7 +146,7 @@ function getScore() {
     var currentList = localStorage.getItem("ScoreList");
     if (currentList !== null) {
         freshList = JSON.parse(currentList);
-        return freshList;
+        return freshList; // try globally declaring a variable and setting the variable here. use for loop
     } else {
         freshList = []; // sets array to empty
     }
@@ -158,21 +158,23 @@ function showScore() {
     scoreRecord.innerHTML = "";
     scoreRecord.style.display = "block";
     
-    var highScores = sort();
+    var highScores = sortScore();
     var topThree = highScores.slice(0,3);
-
+    console.log(topThree);
     for (var i = 0; i < topThree.length; i++); {
-        var item = topThree[i];
+        // var item = topThree[i];
+        console.log(topThree[i]); // shows that the item is currently undefined.
         var li = document.createElement("li");
-        li.textContent = item.user + ": " + item.score;
+        li.textContent = topThree[i].user + ": " + topThree[i].score;
         li.setAttribute("data-index", i);
         scoreRecord.appendChild(li);
     }
 };
 
 // SORT SCORES
-function sortScores() {
+function sortScore() {
     var unsortedList = getScore();
+    console.log(unsortedList);
     if (getScore == null) {
         return;
     } else {
@@ -197,6 +199,7 @@ function saveScore() {
         user: userInitial.value,
         score: totalScore
     }
+
     addItem(scoreItem);
     showScore();
 };
@@ -227,6 +230,7 @@ scoreCheck.addEventListener("click", function(event) {
     introPage.style.display = "none";
     highScorePage.style.display = "block";
     questionPage.style.display = "none";
+    showScore();
 });
 
 // Resets to main page so the user can play again
@@ -243,5 +247,5 @@ backBtn.addEventListener("click", function(event) {
 clearBtn.addEventListener("click", function(event) {
     event.preventDefault();
     localStorage.clear();
-    getScore();
+    showScore();
 });
