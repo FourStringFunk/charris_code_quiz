@@ -161,7 +161,7 @@ function showScore() {
     var highScores = sortScore();
     var topThree = highScores.slice(0,3);
     console.log(topThree);
-    for (var i = 0; i < topThree.length; i++); {
+    for (var i = 0; i < topThree.length; i++) {
         // var item = topThree[i];
         console.log(topThree[i]); // shows that the item is currently undefined.
         var li = document.createElement("li");
