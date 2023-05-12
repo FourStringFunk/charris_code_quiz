@@ -14,6 +14,12 @@ h1, h2, h3, h4, h5, h6, ul, li, p, a, .button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px;
+    background-color: #5a5a5a;
+}
+
+#timer {
+    color: #fff;
 }
 
 body {
@@ -46,13 +52,13 @@ ul {
     list-style-type: none;
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     align-items: baseline;
     padding-left: 50px;
 }
 
 li {
-    margin-bottom: 10px;
+    margin: 5vh 1.5vh 5vh 1.5vh;
 }
 
 .questionPage, .submitPage, .highScorePage, #checkLine {
@@ -62,21 +68,20 @@ li {
 .button {
     background: #fff;
     border-radius: 5px;
-    padding: 10px;
+    padding: 10px 20px;
     cursor: pointer;
     margin-bottom: 10px;
 }
 
 .button:hover {
-    background-color: #e6e6e6;
-    color: #fff;
+    background-color: #f2eeee;
+    color: #5a5a5a;
 }
 
 /* RESPONSIVE DESIGN */
 @media only screen and (max-width: 960px) {
     main {
         margin: 15vh 50px 0 50px;
-        background-color: lightblue;
     }
 }
 
